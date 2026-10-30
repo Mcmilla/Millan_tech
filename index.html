@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Static previews of SokoKisii and PoaStock prototypes.">
+  <meta name="theme-color" content="#f6f7f3">
+  <title>Millan Tech | Prototype previews</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #17231e;
+      background: #f6f7f3;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      display: grid;
+      min-height: 100vh;
+      margin: 0;
+      place-items: center;
+      padding: 2rem 1rem;
+    }
+
+    main {
+      width: min(100%, 48rem);
+      padding: clamp(1.5rem, 5vw, 3.5rem);
+      border: 1px solid #dfe5dc;
+      border-radius: 1.5rem;
+      background: #fff;
+      box-shadow: 0 1rem 3rem #25392c12;
+    }
+
+    .eyebrow {
+      margin: 0 0 .75rem;
+      color: #3b7352;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 12ch;
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      letter-spacing: -.06em;
+      line-height: 1;
+    }
+
+    .intro {
+      max-width: 38rem;
+      margin: 1.25rem 0 2rem;
+      color: #526058;
+      line-height: 1.65;
+    }
+
+    .projects {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    }
+
+    .project {
+      display: flex;
+      min-height: 10rem;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1.25rem;
+      border: 1px solid #dfe5dc;
+      border-radius: 1rem;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color .15s ease, transform .15s ease;
+    }
+
+    .project:hover, .project:focus-visible {
+      transform: translateY(-2px);
+      border-color: #3b7352;
+    }
+
+    .project h2 { margin: 0 0 .5rem; font-size: 1.2rem; }
+    .project p { margin: 0; color: #526058; line-height: 1.5; }
+    .open { margin-top: 1.25rem; color: #286341; font-weight: 700; }
+
+    .notice {
+      margin: 1.5rem 0 0;
+      padding: 1rem 1.1rem;
+      border-radius: .75rem;
+      background: #f1f5ee;
+      color: #445247;
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Millan Tech · Project previews</p>
+    <h1>Ideas made tangible.</h1>
+    <p class="intro">Explore interactive prototypes for local commerce and pharmacy wholesale workflows.</p>
+
+    <nav class="projects" aria-label="Prototype previews">
+      <a class="project" href="Idea/">
+        <div>
+          <h2>SokoKisii</h2>
+          <p>A sample marketplace concept for discovering shops and products in Kisii.</p>
+        </div>
+        <span class="open">Open preview →</span>
+      </a>
+      <a class="project" href="Pharmatech/prototype/">
+        <div>
+          <h2>PoaStock</h2>
+          <p>A local demo of pharmacy wholesale orders, stock, and delivery workflows.</p>
+        </div>
+        <span class="open">Open preview →</span>
+      </a>
+    </nav>
+
+    <p class="notice">These are prototypes with sample data, not production services. No real orders or payments are processed. AI_training and Wifi_pay are intentionally not published here because their live backends are not hosted on GitHub Pages.</p>
+  </main>
+</body>
+</html>
