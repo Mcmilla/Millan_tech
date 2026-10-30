@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f4">
+  <title>SokoKisii | Shop close to home</title>
+  <link rel="stylesheet" href="css\styles.css">
+  <script src="js\app.js" defer></script>
+</head>
+<body>
+  <div class="announcement"><span>MADE FOR KISII</span> Discover local shops. Find what you need. Shop nearby.</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="SokoKisii home"><span class="brand-mark">S</span><span>Soko<span>Kisii</span><small>YOUR TOWN. YOUR SHOPS.</small></span></a>
+    <label class="header-search"><span>⌕</span><input id="search-input" type="search" placeholder="Search products or shops..." aria-label="Search products or shops"><kbd>⌘ K</kbd></label>
+    <div class="header-actions"><button class="location-button" id="location-button"><span>⌖</span><span><small>SHOPPING IN</small><strong>Kisii Town</strong></span><span class="chevron">⌄</span></button><button class="cart-button" id="cart-button"><span>▱</span><span>My basket</span><b id="cart-count">0</b></button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker"><span></span> YOUR NEIGHBOURHOOD MARKETPLACE</div>
+        <h1>Good things are<br>closer than you <em>think.</em></h1>
+        <p>Find everyday favourites from shops right here in Kisii. Browse local, order simply, and choose pickup or delivery.</p>
+        <button class="hero-button" id="explore-button">Explore local finds <span>↓</span></button>
+        <div class="hero-proof"><div class="proof-avatars"><i>G</i><i>M</i><i>A</i><i>+</i></div><span>Supporting the shops<br>that make Kisii, Kisii.</span></div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of shopping bags and local produce">
+        <div class="art-sun"></div><div class="art-arch"><div class="art-shop">KISII<br><b>LOCAL</b></div><div class="bag bag-one"><span>S</span></div><div class="bag bag-two"></div><div class="produce produce-one">●</div><div class="produce produce-two">●</div><div class="produce produce-three">●</div><div class="art-ground"></div></div>
+        <div class="art-sticker"><span>♥</span><br>SHOP<br>LOCAL</div>
+        <div class="art-caption"><b>From around the corner</b><span>Small shops, good finds.</span></div>
+      </div>
+      <div class="hero-deco deco-one"></div><div class="hero-deco deco-two"></div>
+    </section>
+
+    <section class="trust-strip" aria-label="How shopping works">
+      <div><span>01</span><strong>Browse without an account</strong><small>Find local shops and products first.</small></div>
+      <div><span>02</span><strong>Ask the shop directly</strong><small>Confirm today’s stock and price on WhatsApp.</small></div>
+      <div><span>03</span><strong>Agree before you go</strong><small>Arrange pickup or delivery with the seller.</small></div>
+    </section>
+
+    <section class="category-section" id="shop-section">
+      <div class="section-heading"><div><span class="eyebrow">A LITTLE BIT OF EVERYTHING</span><h2>What are you looking for?</h2></div><span class="section-aside">Browse local categories <span>↘</span></span></div>
+      <div class="category-list" id="category-list"></div>
+    </section>
+
+    <section class="market-section">
+      <div class="section-heading market-heading"><div><span class="eyebrow">PICKED FROM KISII SHOPS</span><h2>Local finds, good prices.</h2><p>Browse a sample of what nearby shops could offer.</p></div><button class="clear-filter hidden" id="clear-filter">Clear filters <span>×</span></button></div>
+      <div class="shop-filter-row"><div class="filter-label">SHOP BY</div><div class="shop-chips" id="shop-chips"></div><div class="result-count" id="result-count"></div></div>
+      <div class="product-grid" id="product-grid"></div>
+      <div class="no-results hidden" id="no-results"><span>⌕</span><h3>No finds just yet</h3><p>Try another search or category.</p><button class="outline-button" id="reset-search">Show everything</button></div>
+      <div class="demo-notice"><span>ⓘ</span><span><strong>Prototype preview.</strong> Shops and products shown are sample listings. No real orders or payments are processed.</span></div>
+    </section>
+
+    <section class="seller-banner">
+      <div class="seller-icon">✳</div><div><span class="eyebrow">KISII SHOP OWNERS</span><h2>Bring your shop online.</h2><p>Help local customers discover what you sell. Join the early-access list.</p></div><button id="seller-button" class="seller-button">I have a shop <span>↗</span></button>
+    </section>
+    <footer><a class="footer-brand" href="#">SokoKisii</a><span>Shop close to home. Support the people around you.</span><span>EARLY CONCEPT · KISII, KENYA</span></footer>
+  </main>
+
+  <div class="overlay hidden" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Your basket" aria-hidden="true">
+    <div class="drawer-head"><div><span class="eyebrow">YOUR LOCAL FINDS</span><h2>My basket <span id="drawer-count">(0)</span></h2></div><button class="close-button" id="close-cart" aria-label="Close basket">×</button></div>
+    <div class="cart-content" id="cart-content"></div>
+    <div class="cart-footer hidden" id="cart-footer"><div class="delivery-choice"><label><input type="radio" name="delivery" value="pickup" checked><span><b>Pick up</b><small>Collect from the shop</small></span></label><label><input type="radio" name="delivery" value="delivery"><span><b>Local delivery</b><small>Confirm fee with the shop</small></span></label></div><div class="cart-total"><span>Items subtotal</span><strong id="cart-total">KSh 0</strong></div><button class="checkout-button" id="checkout-button">Continue to checkout <span>→</span></button><p class="cart-legal">No payment is taken in this demo.</p></div>
+  </aside>
+
+  <dialog class="checkout-modal" id="checkout-modal">
+    <form id="checkout-form">
+      <div class="modal-head"><div><span class="eyebrow">DEMO CHECKOUT</span><h2>Where should the shop reach you?</h2><p>For a real order, the shop would confirm availability and delivery with you.</p></div><button type="button" class="close-button" data-close aria-label="Close">×</button></div>
+      <label class="field-label" for="buyer-name">Your name</label><input class="text-input" id="buyer-name" required maxlength="80" placeholder="e.g. Akinyi">
+      <label class="field-label" for="buyer-phone">Phone number</label><input class="text-input" id="buyer-phone" required inputmode="tel" placeholder="07XX XXX XXX" pattern="(?:\+?254|0)7\d{8}">
+      <label class="field-label" for="buyer-location">Pickup / delivery area</label><input class="text-input" id="buyer-location" required maxlength="100" placeholder="e.g. Kisii Town, near the bus stage">
+      <div class="checkout-summary"><span>Sample basket total</span><strong id="checkout-total">KSh 0</strong></div>
+      <div class="demo-warning"><b>Sample order only</b><span>This preview does not contact a shop, reserve items, or collect payment.</span></div>
+      <div class="modal-actions"><button class="outline-button" type="button" data-close>Back to basket</button><button class="checkout-button" type="submit">Preview my order <span>→</span></button></div>
+    </form>
+  </dialog>
+  <dialog class="checkout-modal seller-modal" id="seller-modal">
+    <form id="seller-form">
+      <div class="modal-head"><div><span class="eyebrow">EARLY ACCESS · KISII</span><h2>Tell us about your shop</h2><p>This demo keeps your details on this device and does not submit them anywhere.</p></div><button type="button" class="close-button" data-close aria-label="Close">×</button></div>
+      <label class="field-label" for="seller-name">Shop name</label><input class="text-input" id="seller-name" required maxlength="80" placeholder="Your business name">
+      <label class="field-label" for="seller-category">What do you sell?</label><select class="text-input" id="seller-category"><option>Fashion & clothing</option><option>Phone & electronics</option><option>Beauty & personal care</option><option>Home & kitchen</option><option>Food & groceries</option><option>Other</option></select>
+      <label class="field-label" for="seller-contact">Contact phone</label><input class="text-input" id="seller-contact" required inputmode="tel" placeholder="07XX XXX XXX" pattern="(?:\+?254|0)7\d{8}">
+      <div class="demo-warning"><b>Prototype form</b><span>For now, note the interest locally and follow up in person to validate the idea.</span></div>
+      <div class="modal-actions"><button class="outline-button" type="button" data-close>Cancel</button><button class="checkout-button" type="submit">Save demo interest <span>→</span></button></div>
+    </form>
+  </dialog>
+  <dialog class="checkout-modal contact-modal" id="shop-contact-modal">
+    <div class="contact-content">
+      <div class="modal-head"><div><span class="eyebrow">CONTACT THE LOCAL SHOP</span><h2 id="contact-title">Ask about this item</h2><p id="contact-shop"></p></div><button type="button" class="close-button" data-close aria-label="Close">×</button></div>
+      <div class="contact-assurance"><span>✓</span><div><strong>No account or payment needed</strong><small>The shop confirms availability, final price, and pickup or delivery with you.</small></div></div>
+      <label class="field-label" for="contact-message">Message preview</label><textarea class="text-input message-preview" id="contact-message" rows="4" readonly></textarea>
+      <div class="demo-warning" id="contact-demo-warning"><b>Sample shop: WhatsApp not connected</b><span>This listing is illustrative. No message will be sent. Add a real shop’s WhatsApp number only with the owner’s permission.</span></div>
+      <a class="checkout-button hidden" id="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer">Continue to WhatsApp <span>↗</span></a>
+      <div class="modal-actions"><button class="outline-button" type="button" data-close>Close</button></div>
+    </div>
+  </dialog>
+  <dialog class="checkout-modal reviews-modal" id="reviews-modal">
+    <div class="reviews-content">
+      <div class="modal-head"><div><span class="eyebrow">HONEST CUSTOMER FEEDBACK</span><h2 id="reviews-title">Product reviews</h2><p id="reviews-shop"></p></div><button type="button" class="close-button" data-close aria-label="Close">×</button></div>
+      <div class="reviews-empty"><span class="review-empty-icon">☆</span><strong>No verified reviews yet</strong><p>We only want to show feedback from customers after a real purchase has been completed. We won’t publish made-up ratings or unverified testimonials.</p></div>
+      <div class="review-guidance"><strong>How reviews will work</strong><ol><li>Ask the shop to confirm stock, price, and collection or delivery.</li><li>Buy directly from the shop and keep your receipt or order reference.</li><li>After the order is marked complete, share an honest review.</li></ol></div>
+      <div class="demo-warning"><b>Prototype limitation</b><span>This preview cannot verify purchases or accept public reviews yet. Reviews will be enabled when real order confirmation and moderation are in place.</span></div>
+      <div class="modal-actions"><button class="outline-button" type="button" data-close>Close</button><button class="checkout-button" type="button" id="ask-from-reviews">Ask the shop first <span>→</span></button></div>
+    </div>
+  </dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+</body>
+</html>

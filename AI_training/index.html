@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Apply to become an AI training contributor. Applications require identity verification before job access.">
+  <title>Apply to contribute | Fieldwork AI</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Fieldwork AI home"><span class="brand-mark">F</span> Fieldwork AI</a>
+    <a class="staff-link" href="review.html">Staff review</a>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">Contribute to better AI</p>
+      <h1>Put your skills to work.</h1>
+      <p class="intro-copy">Join a community of contributors helping make AI more useful. Create your account and complete identity verification before you can access training jobs.</p>
+      <ul class="steps" aria-label="Application steps">
+        <li><span>1</span><div><strong>Create your account</strong><small>Tell us a little about yourself.</small></div></li>
+        <li><span>2</span><div><strong>Verify your identity</strong><small>Upload the front and back of your ID and a selfie.</small></div></li>
+        <li><span>3</span><div><strong>Wait for review</strong><small>Job access opens after manual approval.</small></div></li>
+      </ul>
+      <p class="privacy-note"><span aria-hidden="true">⌑</span> Your identity images are stored in a restricted Google Drive folder and are not publicly accessible.</p>
+    </section>
+
+    <section class="card" aria-labelledby="form-title">
+      <div id="auth-view">
+        <div class="tabs" role="tablist" aria-label="Account options">
+          <button class="tab active" id="signup-tab" type="button" role="tab" aria-selected="true" aria-controls="signup-panel">Create account</button>
+          <button class="tab" id="login-tab" type="button" role="tab" aria-selected="false" aria-controls="login-panel">Sign in</button>
+        </div>
+
+        <form id="signup-form" class="form-panel" novalidate>
+          <div class="form-heading">
+            <p class="eyebrow">Contributor application</p>
+            <h2 id="form-title">Create your account</h2>
+            <p>All fields are required. Use details that match your government-issued ID.</p>
+          </div>
+          <div class="field-grid">
+            <label class="field full">Full legal name
+              <input name="full_name" autocomplete="name" required minlength="2" maxlength="100">
+            </label>
+            <label class="field">Email address
+              <input name="email" type="email" autocomplete="email" required maxlength="254">
+            </label>
+            <label class="field">Phone number
+              <input name="phone" type="tel" autocomplete="tel" placeholder="+254712345678" required pattern="^\+[1-9]\d{7,14}$" title="Enter an international number, for example +254712345678.">
+            </label>
+            <label class="field">Country of residence
+              <input name="country" autocomplete="country-name" required minlength="2" maxlength="80">
+            </label>
+            <label class="field">Date of birth
+              <input name="date_of_birth" type="date" autocomplete="bday" required>
+            </label>
+            <label class="field">Identity document
+              <select name="id_type" required>
+                <option value="">Select document type</option>
+                <option value="national_id">National identity card</option>
+                <option value="passport">Passport</option>
+              </select>
+            </label>
+            <label class="field">Password
+              <input name="password" type="password" autocomplete="new-password" required minlength="12" maxlength="128" aria-describedby="password-hint">
+              <small id="password-hint">Use at least 12 characters.</small>
+            </label>
+            <label class="field">Confirm password
+              <input name="password_confirmation" type="password" autocomplete="new-password" required minlength="12" maxlength="128">
+            </label>
+          </div>
+
+          <fieldset class="uploads">
+            <legend>Identity photos</legend>
+            <p>Upload clear, uncropped color images. JPEG, PNG, or WebP; up to 4 MB each.</p>
+            <div class="field-grid">
+              <label class="field">ID front
+                <input name="id_front" type="file" accept="image/jpeg,image/png,image/webp" required>
+              </label>
+              <label class="field">ID back
+                <input name="id_back" type="file" accept="image/jpeg,image/png,image/webp" required>
+              </label>
+              <label class="field full">Selfie
+                <input name="selfie" type="file" accept="image/jpeg,image/png,image/webp" required>
+                <small>Use a recent, well-lit photo of yourself without a face covering.</small>
+              </label>
+            </div>
+          </fieldset>
+
+          <label class="consent">
+            <input name="consent" type="checkbox" required>
+            <span>I confirm that these details and photos are mine. I consent to storing my photos in restricted Google Drive and my application details in Google Sheets for identity verification and contributor onboarding. Authorized reviewers can access them. I understand access to jobs requires manual approval.</span>
+          </label>
+          <p class="privacy-note form-privacy">Do not upload another person's documents. Your images and application details will only be accessible to authorized reviewers.</p>
+          <div class="notice" id="signup-message" role="alert" hidden></div>
+          <button class="button primary full-button" type="submit">Submit application</button>
+          <p class="fine-print">By applying, you confirm that you are at least 18 years old.</p>
+        </form>
+
+        <form id="login-form" class="form-panel" hidden>
+          <div class="form-heading">
+            <p class="eyebrow">Welcome back</p>
+            <h2>Sign in</h2>
+            <p>Check your application status or continue to your contributor account.</p>
+          </div>
+          <label class="field">Email address
+            <input name="email" type="email" autocomplete="email" required maxlength="254">
+          </label>
+          <label class="field">Password
+            <input name="password" type="password" autocomplete="current-password" required maxlength="128">
+          </label>
+          <div class="notice" id="login-message" role="alert" hidden></div>
+          <button class="button primary full-button" type="submit">Sign in</button>
+        </form>
+      </div>
+
+      <section id="account-view" class="account-view" hidden aria-live="polite">
+        <p class="eyebrow">Your application</p>
+        <h2 id="account-title">Application status</h2>
+        <p id="account-description"></p>
+        <div class="status-card">
+          <span class="status-label">Current status</span>
+          <strong id="account-status"></strong>
+          <span id="submission-id" class="submission-id"></span>
+        </div>
+        <button id="logout-button" class="button secondary full-button" type="button">Sign out</button>
+      </section>
+    </section>
+  </main>
+  <footer><span>Fieldwork AI</span><span>Identity verification is required before job access.</span></footer>
+</body>
+</html>

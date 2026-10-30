@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Approve or reject an AI training contributor application.">
+  <title>Staff review | Fieldwork AI</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="review.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">F</span> Fieldwork AI</a>
+    <a class="staff-link" href="./">Contributor sign up</a>
+  </header>
+  <main class="review-layout">
+    <section class="card review-card">
+      <p class="eyebrow">Restricted staff tool</p>
+      <h1>Review an application</h1>
+      <p>Check the application and identity photos in the restricted Google Sheet and Drive folder before changing its status. Never approve an application you have not verified.</p>
+      <form id="review-form" class="review-form">
+        <label class="field">Staff review key
+          <input name="admin_key" type="password" autocomplete="off" required minlength="32">
+          <small>The key is sent only to the server for this action and is not saved in this browser.</small>
+        </label>
+        <label class="field">Submission ID
+          <input name="submission_id" required pattern="[0-9a-fA-F-]{36}" title="Enter the 36-character submission ID shown on the application.">
+        </label>
+        <label class="field">Decision
+          <select name="status" required>
+            <option value="approved">Approve and enable job access</option>
+            <option value="rejected">Reject and keep job access disabled</option>
+          </select>
+        </label>
+        <div id="review-message" class="notice" role="alert" hidden></div>
+        <button class="button primary full-button" type="submit">Save review decision</button>
+      </form>
+      <p class="privacy-note form-privacy">This tool changes account access only. Review identity documents in Google Drive; do not download or share them unless required by your verification procedure.</p>
+    </section>
+  </main>
+  <footer><span>Fieldwork AI</span><span>Authorized reviewers only.</span></footer>
+</body>
+</html>

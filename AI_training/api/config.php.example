@@ -1,0 +1,17 @@
+<?php
+declare(strict_types=1);
+
+return [
+    'database' => [
+        'dsn' => 'mysql:host=localhost;dbname=CPANEL_DB_NAME;charset=utf8mb4',
+        'username' => 'CPANEL_DB_USER',
+        'password' => 'REPLACE_WITH_DATABASE_PASSWORD',
+    ],
+    'google' => [
+        'service_account_json' => '/home/CPANEL_USER/private/google-service-account.json',
+        'drive_folder_id' => 'SHARED_DRIVE_FOLDER_ID',
+        'spreadsheet_id' => 'GOOGLE_SHEETS_SPREADSHEET_ID',
+        'sheet_name' => 'Signups',
+    ],
+    'admin_key' => 'REPLACE_WITH_A_RANDOM_SECRET_OF_AT_LEAST_32_CHARACTERS',
+];

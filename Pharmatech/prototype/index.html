@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>PoaStock | Pharmacy wholesale</title>
+  <link rel="stylesheet" href="css\styles.css">
+  <script src="js\app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="PoaStock home">
+        <span class="brand-mark">P</span>
+        <span>PoaStock<small>WHOLESALE DESK</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon">▦</span>Overview</button>
+        <button class="nav-item" data-page="orders"><span class="nav-icon">▤</span>Orders <span class="nav-count" id="nav-order-count">0</span></button>
+        <button class="nav-item" data-page="inventory"><span class="nav-icon">▧</span>Inventory</button>
+        <button class="nav-item" data-page="customers"><span class="nav-icon">♙</span>Customers</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <span class="help-icon">✳</span>
+          <strong>Need a hand?</strong>
+          <p>Your team’s wholesale workspace, all in one place.</p>
+          <button class="text-button" id="help-button">View quick guide <span>↗</span></button>
+        </div>
+        <div class="user-card">
+          <div class="avatar avatar-dark">JM</div>
+          <div><strong>James Mwangi</strong><small>Workspace admin</small></div>
+          <span class="more-icon">···</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open menu">☰</button>
+        <div class="breadcrumb">PoaStock <span>/</span> <strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions">
+          <span class="today-label" id="today-label"></span>
+          <button class="icon-button notification-button" aria-label="Notifications">♧<i></i></button>
+          <div class="avatar avatar-green">JM</div>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="page-view" id="overview-page">
+          <div class="page-heading">
+            <div><div class="eyebrow" id="today-eyebrow"></div><h1>Good morning, James <span class="wave">✳</span></h1><p>Here’s what’s happening with your wholesale desk today.</p></div>
+            <button class="button button-primary" data-action="new-order"><span>＋</span> New order</button>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>Orders today</span><span class="stat-icon icon-blue">▤</span></div><div class="stat-value" id="stat-orders">0</div><div class="stat-foot"><span class="status-dot dot-blue"></span><span id="stat-pending">0 awaiting confirmation</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Sales today</span><span class="stat-icon icon-purple">↗</span></div><div class="stat-value" id="stat-sales">KSh 0</div><div class="stat-foot"><span class="status-dot dot-green"></span><span>From confirmed orders</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Awaiting payment</span><span class="stat-icon icon-orange">◷</span></div><div class="stat-value" id="stat-unpaid">0</div><div class="stat-foot"><span class="status-dot dot-orange"></span><span>Ready for M-Pesa request</span></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Low stock items</span><span class="stat-icon icon-red">⌁</span></div><div class="stat-value" id="stat-low-stock">0</div><div class="stat-foot"><span class="status-dot dot-red"></span><span>At or below reorder level</span></div></article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel orders-panel">
+              <div class="panel-heading"><div><h2>Recent orders</h2><p>Keep track of pharmacy orders</p></div><button class="text-button" data-page="orders">View all <span>→</span></button></div>
+              <div class="table-wrap"><table><thead><tr><th>ORDER</th><th>PHARMACY</th><th>ITEMS</th><th>AMOUNT</th><th>STATUS</th><th></th></tr></thead><tbody id="recent-orders-body"></tbody></table></div>
+            </section>
+            <section class="panel stock-panel">
+              <div class="panel-heading"><div><h2>Stock watch</h2><p>Items that need a restock soon</p></div><button class="text-button" data-page="inventory">Inventory <span>→</span></button></div>
+              <div class="stock-list" id="stock-watch-list"></div>
+            </section>
+          </div>
+          <section class="panel activity-panel">
+            <div class="panel-heading"><div><h2>Today’s workflow</h2><p>A quick look at orders that need attention</p></div><span class="live-label"><i></i> LIVE OVERVIEW</span></div>
+            <div class="workflow-grid">
+              <button class="workflow-step" data-workflow="pending"><span class="workflow-icon icon-blue">▤</span><span><strong id="workflow-new">0</strong><small>New orders</small></span><span class="workflow-arrow">→</span></button>
+              <button class="workflow-step" data-workflow="awaiting"><span class="workflow-icon icon-orange">◷</span><span><strong id="workflow-payment">0</strong><small>Awaiting payment</small></span><span class="workflow-arrow">→</span></button>
+              <button class="workflow-step" data-workflow="paid"><span class="workflow-icon icon-green">✓</span><span><strong id="workflow-paid">0</strong><small>Paid, ready to dispatch</small></span><span class="workflow-arrow">→</span></button>
+              <button class="workflow-step" data-workflow="dispatched"><span class="workflow-icon icon-purple">↗</span><span><strong id="workflow-delivery">0</strong><small>Out for delivery</small></span><span class="workflow-arrow">→</span></button>
+            </div>
+          </section>
+          <p class="demo-note"><span>ⓘ</span> Prototype with sample data. M-Pesa actions are simulated and do not move money.</p>
+        </section>
+
+        <section class="page-view hidden" id="orders-page">
+          <div class="page-heading">
+            <div><div class="eyebrow">WHOLESALE DESK</div><h1>Orders</h1><p>Review, confirm, and track pharmacy orders.</p></div>
+            <button class="button button-primary" data-action="new-order"><span>＋</span> New order</button>
+          </div>
+          <section class="panel full-panel">
+            <div class="panel-toolbar"><div class="filter-tabs" id="order-filters"><button class="filter-tab active" data-filter="all">All orders</button><button class="filter-tab" data-filter="pending">New</button><button class="filter-tab" data-filter="awaiting">Awaiting payment</button><button class="filter-tab" data-filter="paid">Paid</button><button class="filter-tab" data-filter="dispatched">Dispatched</button></div><label class="search-box"><span>⌕</span><input id="order-search" type="search" placeholder="Search orders or pharmacies"></label></div>
+            <div class="table-wrap"><table><thead><tr><th>ORDER</th><th>PHARMACY</th><th>ITEMS</th><th>AMOUNT</th><th>PAYMENT</th><th>ORDER STATUS</th><th></th></tr></thead><tbody id="orders-body"></tbody></table></div>
+            <div class="table-empty hidden" id="orders-empty">No orders match this view.</div>
+          </section>
+        </section>
+
+        <section class="page-view hidden" id="inventory-page">
+          <div class="page-heading">
+            <div><div class="eyebrow">PRODUCT CATALOGUE</div><h1>Inventory</h1><p>Keep your product availability and reorder levels up to date.</p></div>
+            <button class="button button-primary" id="add-product-button"><span>＋</span> Add product</button>
+          </div>
+          <div class="stats-grid compact-stats">
+            <article class="stat-card"><div class="stat-top"><span>Products listed</span><span class="stat-icon icon-blue">▧</span></div><div class="stat-value" id="inventory-total">0</div><div class="stat-foot">Active in your catalogue</div></article>
+            <article class="stat-card"><div class="stat-top"><span>Low stock</span><span class="stat-icon icon-red">⌁</span></div><div class="stat-value" id="inventory-low">0</div><div class="stat-foot">Review reorder levels</div></article>
+            <article class="stat-card"><div class="stat-top"><span>Out of stock</span><span class="stat-icon icon-orange">!</span></div><div class="stat-value" id="inventory-out">0</div><div class="stat-foot">Unavailable to order</div></article>
+          </div>
+          <section class="panel full-panel">
+            <div class="panel-toolbar"><div><h2>Product list</h2><p>Sample catalogue for demonstration</p></div><label class="search-box"><span>⌕</span><input id="product-search" type="search" placeholder="Search product"></label></div>
+            <div class="table-wrap"><table><thead><tr><th>PRODUCT</th><th>SKU</th><th>UNIT</th><th>PRICE</th><th>IN STOCK</th><th>REORDER AT</th><th>STATUS</th></tr></thead><tbody id="inventory-body"></tbody></table></div>
+            <div class="table-empty hidden" id="inventory-empty">No products match your search.</div>
+          </section>
+        </section>
+
+        <section class="page-view hidden" id="customers-page">
+          <div class="page-heading"><div><div class="eyebrow">YOUR BUYERS</div><h1>Customers</h1><p>Pharmacies that order from your wholesale desk.</p></div><button class="button button-primary" id="add-customer-button"><span>＋</span> Add customer</button></div>
+          <section class="panel full-panel">
+            <div class="panel-toolbar"><div><h2>Pharmacy customers</h2><p>Contact and order history</p></div><label class="search-box"><span>⌕</span><input id="customer-search" type="search" placeholder="Search pharmacy"></label></div>
+            <div class="table-wrap"><table><thead><tr><th>PHARMACY</th><th>CONTACT</th><th>PHONE</th><th>LOCATION</th><th>ORDERS</th><th>LAST ORDER</th></tr></thead><tbody id="customers-body"></tbody></table></div>
+            <div class="table-empty hidden" id="customers-empty">No pharmacies match your search.</div>
+          </section>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="toast-region" id="toast-region" aria-live="polite"></div>
+  <dialog class="modal" id="order-modal">
+    <form id="order-form">
+      <div class="modal-heading"><div><div class="eyebrow">NEW WHOLESALE ORDER</div><h2>Create an order</h2></div><button type="button" class="modal-close" data-close aria-label="Close">×</button></div>
+      <label class="field-label" for="order-customer">Pharmacy customer</label><select id="order-customer" required></select>
+      <div class="form-section-heading"><strong>Order items</strong><button type="button" class="text-button" id="add-order-item">＋ Add item</button></div>
+      <div id="order-items"></div>
+      <div class="total-row"><span>Order total</span><strong id="order-total">KSh 0</strong></div>
+      <label class="field-label" for="order-notes">Note <span class="optional">(optional)</span></label><input class="text-input" id="order-notes" maxlength="140" placeholder="e.g. Deliver before 3pm">
+      <div class="modal-actions"><button type="button" class="button button-secondary" data-close>Cancel</button><button class="button button-primary" type="submit">Create order</button></div>
+    </form>
+  </dialog>
+  <dialog class="modal small-modal" id="payment-modal">
+    <form id="payment-form">
+      <div class="modal-heading"><div><div class="eyebrow">PAYMENT REQUEST · DEMO</div><h2>Request M-Pesa payment</h2></div><button type="button" class="modal-close" data-close aria-label="Close">×</button></div>
+      <div class="payment-summary"><span>Order amount</span><strong id="payment-amount">KSh 0</strong></div>
+      <label class="field-label" for="payment-phone">Customer M-Pesa number</label><input class="text-input" id="payment-phone" inputmode="tel" autocomplete="tel" placeholder="07XX XXX XXX" required pattern="(?:\+?254|0)7\d{8}">
+      <div class="sandbox-warning"><strong>Simulation only</strong><span>This demo will not send an STK Push or collect a payment.</span></div>
+      <div class="modal-actions"><button type="button" class="button button-secondary" data-close>Cancel</button><button class="button button-primary" type="submit">Simulate payment</button></div>
+    </form>
+  </dialog>
+  <dialog class="modal small-modal" id="product-modal">
+    <form id="product-form">
+      <div class="modal-heading"><div><div class="eyebrow">PRODUCT CATALOGUE</div><h2>Add a product</h2></div><button type="button" class="modal-close" data-close aria-label="Close">×</button></div>
+      <label class="field-label" for="product-name">Product name</label><input class="text-input" id="product-name" required maxlength="80" placeholder="e.g. Paracetamol 500mg">
+      <div class="form-row"><div><label class="field-label" for="product-sku">SKU</label><input class="text-input" id="product-sku" required maxlength="24" placeholder="e.g. MED-104"></div><div><label class="field-label" for="product-unit">Unit / pack</label><input class="text-input" id="product-unit" required maxlength="30" placeholder="e.g. Box of 100"></div></div>
+      <div class="form-row"><div><label class="field-label" for="product-price">Price (KSh)</label><input class="text-input" id="product-price" type="number" min="1" step="1" required></div><div><label class="field-label" for="product-stock">Stock quantity</label><input class="text-input" id="product-stock" type="number" min="0" step="1" required></div></div>
+      <label class="field-label" for="product-reorder">Reorder level</label><input class="text-input" id="product-reorder" type="number" min="0" step="1" value="10" required>
+      <div class="modal-actions"><button type="button" class="button button-secondary" data-close>Cancel</button><button class="button button-primary" type="submit">Add product</button></div>
+    </form>
+  </dialog>
+  <dialog class="modal small-modal" id="customer-modal">
+    <form id="customer-form">
+      <div class="modal-heading"><div><div class="eyebrow">CUSTOMER DIRECTORY</div><h2>Add a pharmacy</h2></div><button type="button" class="modal-close" data-close aria-label="Close">×</button></div>
+      <label class="field-label" for="customer-name">Pharmacy name</label><input class="text-input" id="customer-name" required maxlength="80" placeholder="e.g. Greenview Pharmacy">
+      <label class="field-label" for="customer-contact">Contact person</label><input class="text-input" id="customer-contact" required maxlength="80" placeholder="Full name">
+      <label class="field-label" for="customer-phone">Phone number</label><input class="text-input" id="customer-phone" required inputmode="tel" placeholder="07XX XXX XXX" pattern="(?:\+?254|0)7\d{8}">
+      <label class="field-label" for="customer-location">Location</label><input class="text-input" id="customer-location" required maxlength="80" placeholder="e.g. Westlands, Nairobi">
+      <div class="modal-actions"><button type="button" class="button button-secondary" data-close>Cancel</button><button class="button button-primary" type="submit">Add pharmacy</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?php
+declare(strict_types=1);
+
+return [
+    'base_url' => 'https://wifi.example.com',
+    'callback_token' => 'REPLACE_WITH_A_RANDOM_64_CHARACTER_SECRET',
+    'encryption_key' => 'REPLACE_WITH_BASE64_ENCODED_32_RANDOM_BYTES',
+    'database' => [
+        'dsn' => 'mysql:host=localhost;dbname=CPANEL_DB_NAME;charset=utf8mb4',
+        'username' => 'CPANEL_DB_USER',
+        'password' => 'REPLACE_WITH_DATABASE_PASSWORD',
+    ],
+    'mpesa' => [
+        'consumer_key' => 'REPLACE_WITH_SAFARICOM_PRODUCTION_CONSUMER_KEY',
+        'consumer_secret' => 'REPLACE_WITH_SAFARICOM_PRODUCTION_CONSUMER_SECRET',
+        'shortcode' => 'REPLACE_WITH_APPROVED_PAYBILL_OR_TILL',
+        'passkey' => 'REPLACE_WITH_SAFARICOM_PRODUCTION_PASSKEY',
+        'transaction_type' => 'CustomerPayBillOnline',
+    ],
+    'router' => [
+        'base_url' => 'https://router-vpn-address',
+        'username' => 'wifi-billing-api',
+        'password' => 'REPLACE_WITH_RESTRICTED_ROUTEROS_API_PASSWORD',
+        'hotspot_profile' => 'default',
+    ],
+];
